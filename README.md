@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This work is a proposal for updating the soundfont standard and is by no mean an official document on which you should base a development, at least as long as it's not adopted by major actors working with soundfonts if it's possible to list them (at least FluidSynth / FluidLight for the open-source community).
+This work is a proposal for updating the soundfont standard and is by no means an official document on which you should base a development, at least as long as it's not adopted by major actors working with soundfonts if it's possible to list them (at least FluidSynth / FluidLight for the open-source community).
 
 
 ## Introduction
@@ -44,7 +44,7 @@ Providing an update to the soundfont standard could:
 
 |Before (v2.xx)|After (v3.00)|
 |--|--|
-|Soundfonts are all packed in the .sf2 format, containing raw sample data.|Three packaging will be possible, depending on the use case.<br><br>**Classical "sf2"**<br><br>All parameters and samples are contained in one sf2 file, the samples being either saved in a raw format or with the lossless compression FLAC. A sf2 file can then be reused and edited with the same quality. FLAC compression could become automatic.<br><br>**Compressed soundfont**<br><br>All parameters and samples are contained in one sf3 file, the samples being saved with the lossy compression OGG. A sf3 file can be then easily embedded but is not intended to be edited because of the lower quality.<br><br>**Multiple files**<br><br>After having improved the soundfont capabilities, saving the soundfont as an sfz can become straightforward. All parameters will be in a sfz file and all samples will be saved as .wav / .flac or .ogg files.<br><br>Note: saving a soundfont v3.00 as an sfz file can be viewed as an independent step (an export step) with no impact on the soundfont v3.00 standard. This is something than can however be kept in mind to bring communities together.|
+|Soundfonts are all packed in the .sf2 format, containing raw sample data only.|Different packaging are possible depending on the compression inside it. Since the format itself would be the same and only the data storage changes, the ".sf2" could be kept while being prefixed by the compression extension. For example:<br><br><ul><li>"file.sf2"<br>This file contains raw data</li><li>"file.ogg.sf2"<br>This file contains OGG data (compression with loss: the actual .sf3)</li><li>"file.flac.sf2"<br>This file contains FLAC data (lossless compression)</li></ul><br>*Note 1: the compression prefix is just a hint so that the user knows what kind of data he is dealing with. If the compression prefix is missing, a software opening the soundfont would still be able to understand it.*<br><br>*Note 2: after having improved the soundfont capabilities, saving the soundfont v3.00 as an sfz can become straightforward. This is something than could be useful for interoperability.*|
 
 
 ### Miscellaneous
