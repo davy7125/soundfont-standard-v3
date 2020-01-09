@@ -16,7 +16,7 @@ Technology and usage have evolved and there is a growing need for an update on t
 * Soundfonts are more and more used in mobile devices or as third party (for instance in MuseScore) and there is a need for decreasing the size of the soundfont so that it can be easily embedded.
 
 * Due to these defects several formats based on soundfonts have been designed (the list may not be exhaustive):
-  * to compress soundfonts: sfArk, SfPack, sf3, sf4;
+  * to compress soundfonts: sfArk, SFPack, sf2pack, sf3, sf4;
   * to increase its capabilities: sfz (providing also another packaging), Viena - while still using the sf2 v2.xx format - extended some of the sf2 capabilities.
 
 Providing an update to the soundfont standard could:
