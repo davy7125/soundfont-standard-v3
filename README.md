@@ -72,6 +72,8 @@ Providing an update to the soundfont standard could:
 |--|--|--|
 |**Number of generators / modulators**|The number of generators and modulators is limited to 65536.|The number of generators and modulators is not limited.|
 |**dB units**|Due to a historical code mistake, dB stored in a soundfont or not reel dB but 0.4 dB.|dB stored in a soundfont are real dB.|
+|**File size**|Maximum file size is 4 GB due to the 32-bit addresses and sizes stored in a sf2 file.|Addresses and sizes will be written using a 64-bit format, removing the 4 GB limitation.|
+|**Number of banks**|128 banks are available.|Up to 16384 (128 × 128) banks are available.|
 
 
 ## Description on the file format
