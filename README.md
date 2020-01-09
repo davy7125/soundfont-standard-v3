@@ -80,15 +80,19 @@ Providing an update to the soundfont standard could:
 
 *The modifications of the file format will be written when the requirements are completed.*
 
+## Compatibility v2.xx ⟺ v3.00
 
-## Conclusion
+Soundfont v2.xx can be updated in the new format 3.00 with a loss only in a very specific case when 2 LFOs or 2 envelopes target the pitch at the instrument or preset level.
 
-If all requirements are solved:
+It will be possible to save a v3.00 soundfont as a v2.xx soundfont with a loss that will not prevent the soundfont to be played.
 
-* most of the nowadays needs regarding the sample-based synthesis will be added and it will give fresh air to the soundfont standard;
-* soundfont v2.xx can be updated in the new format 3.00 with a loss only in a very specific case: when 2 LFOs or 2 envelopes target the pitch at the instrument or preset level;
-* it will be possible to save a v3.00 soundfont as a v2.xx soundfont with a loss that will not prevent the soundfont to be played;
-* it will be clearer to the user that .sf2 files contain lossless data while .sf3 files have a lower quality and file size;
-* developers shouldn't have the need for another custom format in most use cases.
+## What about the sfz format?
 
-Then, time will be necessary to provide sound engines and VST compatible with the new version of the standard.
+The sfz format is already able to feature all the points mentioned above, with the exception of the packaging. So why an update to the soundfont standard would be worth? We could see these two main points:
+
+* writing a clear standard will provide a clear documentation,
+* the packaging offered by the sf2 allow soundfonts to be embedded more easily. 
+
+The sfz format will still be ahead in the game regarding the audio synthesis possibilities but the sf2 format would still have a nice future. Its strength is indeed not in the multiplication of features but rather in that it does "just right" the job, in an almost minimalist way.
+
+Also, if the new soundfont specifications meet the core features of the sfz format, we could then see two faces of the same coin!
