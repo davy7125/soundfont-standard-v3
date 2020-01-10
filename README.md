@@ -76,12 +76,12 @@ Providing an update to the soundfont standard could:
 
 File extension *sf2* could be kept if:
 
-* there are no copyright infringement with the Creative company,
+* there are no copyright infringements with the Creative company,
 * it is considered that existing software opening sf2 files must include at least a check to the version number of the standard so that they either display a warning to the user (for incompatibility) or adapt the way they load the soundfont.
 
 The alternative would be to use the extension *sf3*.
 
-*Note:* a prefix to the extension could optionally be added for soundfonts containing samples compressed with the Opus algorithm - for example "soundfont.compressed.sf2" - giving a hint to the user that data have been compressed with a quality loss.
+*Note: a prefix to the extension could optionally be added for soundfonts containing samples compressed with the Opus algorithm - for example "soundfont.compressed.sf2" - giving a hint to the user that data have been compressed with a quality loss.*
 
 ### Data structure
 
