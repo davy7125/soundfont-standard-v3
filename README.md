@@ -76,7 +76,7 @@ Providing an update to the soundfont standard could:
 |**Number of banks**|128 banks are available.|Up to 16384 (128 × 128) banks are available.|
 
 
-## Description on the file format
+## Description of the file format
 
 *The modifications of the file format will be written when the requirements are completed.*
 
