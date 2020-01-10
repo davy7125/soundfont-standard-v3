@@ -41,7 +41,7 @@ Providing an update to the soundfont standard could:
 
 |  |Before (v2.xx)|After (v3.00)|
 |--|--|--|
-|**Sample types**|Raw data, either 16 or 24 bit, is used.|Raw data (.wav), FLAC or OGG can be used. The precision in bits is now sample-dependent, not fixed for the entire soundfont.|
+|**Sample storage**|Samples are stored as raw data, either 16- or 24-bit.|Samples will be stored either as raw data, or can be stored after using the lossless compression FLAC or the lossy compression Opus. These choices have been taken with regards to the use cases of a soundfont.<br><br><ul><li>If the soundfont is intended to be shared, downloaded or embedded easily, then the Opus compression seems wise (Opus compression is free and provides a better quality than OGG).</li><li>If the soundfont must provide the best quality so that it can be reedited for instance, the lossless compression FLAC (also free) will be chosen.</li><li>If we need a fast load of the soundfont, raw data might be chosen.</li></ul><br>In addition to this, the precision in bits is now sample-dependent, not fixed for the entire soundfont.|
 |**Stereo support**|Both sides of a stereo sample are processed as mono samples. All parameters are duplicated at the sample and instrument levels. Default panning for these samples are either -50 (left) or 50 (right).|Both sides of a stereo sample share the same configuration at the sample and instrument levels. Default panning become 0 at the instrument level.|
 |**Multiple loops**|At the sample level, it is possible to specify only one loop.|At the sample level, an unlimited number of loops can be specified. If several loops are correctly intricate, they will be played successively during playback.|
 
@@ -60,12 +60,6 @@ Providing an update to the soundfont standard could:
 |**Default "velocity → filter cutoff" modulator**|Three versions of the default modulator "velocity → filter cutoff" have been used.<br><br>In v2.01, it included a switch (as second source) triggered between velocities 63 and 64, resulting in an ugly jump.<br><br>Creative Labs realized the error and in v2.04, the switch as been removed.<br><br>In the meantime, developers completely removed the default filter "velocity → filter cutoff".|Default filter "velocity → filter cutoff" is removed.|
 |**Attenuation**|Only a positive attenuation is allowed, resulting in an attenuation only.|A positive or negative attenuation is allowed, resulting in a possible amplification.|
 
-### Packaging
-
-|Before (v2.xx)|After (v3.00)|
-|--|--|
-|Soundfonts are all packed in the .sf2 format, containing raw sample data only.|Different packaging are possible depending on the compression inside it. Since the format itself would be the same and only the data storage changes, the ".sf2" could be kept while being prefixed by the compression extension. For example:<br><br><ul><li>"file.sf2"<br>This file contains raw data</li><li>"file.ogg.sf2"<br>This file contains OGG data (compression with loss: the actual .sf3)</li><li>"file.flac.sf2"<br>This file contains FLAC data (lossless compression)</li></ul><br>*Note 1: the compression prefix is just a hint so that the user knows what kind of data he is dealing with. If the compression prefix is missing, a software opening the soundfont would still be able to understand it.*<br><br>*Note 2: after having improved the soundfont capabilities, saving the soundfont v3.00 as an sfz can become straightforward. This is something than could be useful for interoperability.*<br><br>*Note 3: if the extension sf2 cannot be used because of a copyright infringement, the extension sf3 will be used.*|
-
 ### Miscellaneous
 
 |  |Before (v2.xx)|After (v3.00)|
@@ -78,9 +72,28 @@ Providing an update to the soundfont standard could:
 
 ## Description of the file format
 
-*The modifications of the file format will be written when the requirements are completed.*
+### File extension
+
+File extension *sf2* could be kept if:
+
+* there are no copyright infringement with the Creative company,
+* it is considered that existing software opening sf2 files must include at least a check to the version number of the standard so that they either display a warning to the user (for incompatibility) or adapt the way they load the soundfont.
+
+The alternative would be to use the extension *sf3*.
+
+*Note:* a prefix to the extension could optionally be added for soundfonts containing samples compressed with the Opus algorithm - for example "soundfont.compressed.sf2" - giving a hint to the user that data have been compressed with a quality loss.
+
+### Data structure
+
+*Will be written when the requirements are completed.*
 
 ## Compatibility v2.xx ⟺ v3.00
+
+### Reading the new format
+
+Changes will be done so that the structure of a soundfont remains the same as much as possible. Software might not be able to fully use the new soundfont capabilities, but they will at least be able to easily read a soundfont v3.00 in a degraded mode.
+
+### Conversions
 
 Soundfont v2.xx can be updated in the new format 3.00 with a loss only in a very specific case when 2 LFOs or 2 envelopes target the pitch at the instrument or preset level.
 
